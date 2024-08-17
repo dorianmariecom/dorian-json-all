@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dorian-json-all"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
   s.summary = "Evaluates some code on json-all line of the input"
   s.description =
     "#{s.summary}\n\ne.g. `ls -l | json-all \"puts it.split.first\"`"
