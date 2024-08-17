@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     dorian-json-all (0.0.1)
+      dorian-to_struct
 
 GEM
   remote: https://rubygems.org/
@@ -24,6 +25,7 @@ GEM
     connection_pool (2.4.1)
     diff-lcs (1.5.1)
     dorian-times (0.5.0)
+    dorian-to_struct (0.4.0)
     drb (2.2.1)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)

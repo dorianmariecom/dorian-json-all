@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "json"
+require "dorian-to_struct"
+
 if ARGV.size != 1 || ARGV[0] == "--help" || ARGV[0] == "-h"
-  puts "USAGE: ... | each CODE"
-  exit
+  abort "USAGE: ... | json-all CODE"
 end
 
-$stdin.each_line do |it|
-  it.strip!
-  eval(ARGV.first)
-end
+it = JSON.parse($stdin.each_line.to_a.map(&:strip).join("\n")).to_deep_struct
+
+eval(ARGV.first)
