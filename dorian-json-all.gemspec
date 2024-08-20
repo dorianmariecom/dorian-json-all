@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dorian-json-all"
-  s.version = "0.1.1"
+  s.version = File.read("VERSION").strip
   s.summary = "evaluates some ruby code on all of a json input"
   s.description = s.summary
   s.authors = ["Dorian Marié"]
