@@ -1,13 +1,30 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require "dorian/arguments"
+require "dorian/to_struct"
 require "json"
-require "dorian-to_struct"
 
-if ARGV.size != 1 || ARGV[0] == "--help" || ARGV[0] == "-h"
-  abort "USAGE: ... | json-all CODE"
+parsed =
+  Dorian::Arguments.parse(
+    version: {
+      alias: :v
+    },
+    help: {
+      alias: :h
+    }
+  )
+
+abort parsed.help if parsed.options.help
+
+if parsed.options.version
+  abort File.read(File.expand_path("../../VERSION", __FILE__))
 end
 
-it = JSON.parse($stdin.each_line.to_a.map(&:strip).join("\n")).to_deep_struct
+inputs = parsed.files.map { |file| File.read(file) }
+inputs = [$stdin.each_line.to_a.map(&:strip).join("\n")] if inputs.empty?
 
-eval(ARGV.first)
+inputs.each do |input|
+  it = JSON.parse(input)
+  eval(parsed.arguments.join(" "))
+end
