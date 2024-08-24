@@ -17,6 +17,6 @@ inputs = parsed.files.map { |file| File.read(file) }
 inputs = [$stdin.each_line.to_a.map(&:strip).join("\n")] if inputs.empty?
 
 inputs.each do |input|
-  it = JSON.parse(input)
+  it = JSON.parse(input).to_deep_struct
   eval(parsed.arguments.join(" "))
 end
