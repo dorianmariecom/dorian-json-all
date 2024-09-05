@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dorian-json-all (1.1.1)
+    dorian-json-all (1.1.2)
       dorian-arguments
       dorian-to_struct
       json
